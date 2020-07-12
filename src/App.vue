@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <TodoHeader></TodoHeader>
-    <TodoInput></TodoInput>
-    <TodoList></TodoList>
+    <TodoInput v-on:addTodoItem="addOneItem"></TodoInput>
+    <TodoList v-bind:propsdata="todoItems"></TodoList>
     <TodoFooter></TodoFooter>
   </div>
 </template>
@@ -15,11 +15,33 @@ import TodoFooter from "./components/TodoFooter";
 
 export default {
   name: "App",
+  data() {
+    return {
+      todoItems: []
+    };
+  },
+  methods: {
+    addOneItem(item) {
+      let obj = { completed: false, item };
+      localStorage.setItem(item, JSON.stringify(obj));
+      this.todoItems.push(obj);
+    }
+  },
   components: {
     TodoHeader,
     TodoInput,
     TodoList,
     TodoFooter
+  },
+  created() {
+    if (localStorage.length > 0) {
+      for (let i = 0; i < localStorage.length; i++) {
+        if (localStorage.key(i) !== "loglevel:webpack-dev-server") {
+          const item = JSON.parse(localStorage.getItem(localStorage.key(i)));
+          this.todoItems.push(item);
+        }
+      }
+    }
   }
 };
 </script>

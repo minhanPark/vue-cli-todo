@@ -18,8 +18,7 @@ export default {
     addTodo() {
       if (this.newTodoItem !== "") {
         const item = this.newTodoItem;
-        let obj = { completed: false, item };
-        localStorage.setItem(item, JSON.stringify(obj));
+        this.$emit("addTodoItem", item);
         this.clearValue();
       }
     },
