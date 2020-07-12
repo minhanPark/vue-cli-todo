@@ -16,10 +16,12 @@ export default {
   },
   methods: {
     addTodo() {
-      const item = this.newTodoItem;
-      console.log(item);
-      localStorage.setItem(item, item);
-      this.clearValue();
+      if (this.newTodoItem !== "") {
+        const item = this.newTodoItem;
+        let obj = { completed: false, item };
+        localStorage.setItem(item, JSON.stringify(obj));
+        this.clearValue();
+      }
     },
     clearValue() {
       this.newTodoItem = "";
