@@ -20,14 +20,11 @@ export default {
   methods: {
     removeTodo(todoItem, index) {
       console.log(todoItem, index);
-      localStorage.removeItem(todoItem);
-      this.todoItems.splice(index, 1);
+      this.$emit("removeItem", todoItem, index);
     },
     toggleCompleted(todoItem, index) {
       console.log(todoItem, index);
-      todoItem.completed = !todoItem.completed;
-      localStorage.removeItem(todoItem.item);
-      localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
+      this.$emit("toggleItem", todoItem, index);
     }
   }
 };
