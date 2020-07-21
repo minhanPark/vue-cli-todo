@@ -32,7 +32,7 @@ export default {
     addTodo() {
       if (this.newTodoItem !== "") {
         const item = this.newTodoItem;
-        this.$emit("addTodoItem", item);
+        this.$store.commit("addOneItem", item);
         this.clearValue();
       } else {
         this.showModal = !this.showModal;
