@@ -3,7 +3,7 @@
     <TodoHeader></TodoHeader>
     <TodoInput></TodoInput>
     <TodoList></TodoList>
-    <TodoFooter v-on:clearAll="clearAllItems"></TodoFooter>
+    <TodoFooter></TodoFooter>
   </div>
 </template>
 
@@ -30,10 +30,10 @@ export default {
     //   localStorage.removeItem(todoItem.item);
     //   localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
     // },
-    clearAllItems() {
-      localStorage.clear();
-      this.todoItems = [];
-    }
+    // clearAllItems() {
+    //   localStorage.clear();
+    //   this.todoItems = [];
+    // }
   },
   components: {
     TodoHeader,
