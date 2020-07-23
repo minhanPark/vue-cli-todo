@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       newTodoItem: "",
-      showModal: false
+      showModal: false,
     };
   },
   methods: {
@@ -40,11 +40,11 @@ export default {
     },
     clearValue() {
       this.newTodoItem = "";
-    }
+    },
   },
   components: {
-    Modal
-  }
+    Modal,
+  },
 };
 </script>
 
